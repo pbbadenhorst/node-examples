@@ -1,6 +1,4 @@
 var jasmine = require('jasmine');
-var http = require('http');
-
 var server = require('../src');
 var Agent = require('./helpers/agent');
 var agent = new Agent(server);
@@ -41,5 +39,15 @@ describe('Hello World Server', function () {
         });
     });
 
+  });
+});
+
+beforeAll(function() {
+  
+});
+
+afterAll(function(){
+  server.close(function() {
+    console.log('\n\nClosed server after running specs.');
   });
 });
