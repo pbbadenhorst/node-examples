@@ -1,0 +1,28 @@
+{
+  "name": "vanilla-jasmine",
+  "version": "1.0.0",
+  "description": "Testing NodeJS vanilla http server with jasmine",
+  "main": "app\\server.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "jasmine": "^2.6.0"
+  },
+  "scripts": {
+    "start": "node app\\server.js",
+    "test": "node spec\\jasminefile.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "node-examples"
+  },
+  "keywords": [
+    "Testing",
+    "Debugging",
+    "BDD",
+    "vanilla",
+    "jasmine"
+  ],
+  "author": "Bernard Badenhorst",
+  "license": "ISC"
+}
