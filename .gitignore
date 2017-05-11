@@ -46,5 +46,11 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Node files
+# Node dev files
 node_modules
+
+# Node debug.log files
+npm-debug.log
+
+# Coverage files
+coverage

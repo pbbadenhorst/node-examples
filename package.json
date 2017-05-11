@@ -6,13 +6,17 @@
   "dependencies": {},
   "devDependencies": {
     "coveralls": "^2.13.1",
+    "istanbul": "^0.4.5",
     "jasmine": "^2.6.0"
   },
   "scripts": {
     "vanilla-jasmine": "node vanilla-jasmine/src/index.js",
-    "vanilla-jasmine-test": "node vanilla-jasmine/spec/index.js",
+    "vanilla-jasmine-test": "istanbul cover vanilla-jasmine/spec/index.js",
+    "vanilla-jasmine-coverage": "istanbul cover vanilla-jasmine/spec/index.js",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "start": "npm run vanilla-jasmine",
-    "test": "npm run vanilla-jasmine-test"
+    "test": "npm run vanilla-jasmine-test",
+    "coverage": "npm run vanilla-jasmine-coverage"
   },
   "repository": {
     "type": "git",
