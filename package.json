@@ -3,24 +3,24 @@
   "version": "1.0.0",
   "description": "Testing NodeJS vanilla http server with jasmine",
   "main": "app\\server.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "jasmine": "^2.6.0"
   },
   "scripts": {
-    "start": "node src\\index.js",
-    "test": "node spec\\index.js"
+    "vanilla-jasmine": "node vanilla-jasmine\\src\\index.js",
+    "vanilla-jasmine-test": "node vanilla-jasmine\\spec\\index.js",
+    "start": "npm run vanilla-jasmine",
+    "test": "npm run vanilla-jasmine-test"
   },
   "repository": {
     "type": "git",
     "url": "node-examples"
   },
   "keywords": [
-    "Testing",
-    "Debugging",
-    "BDD",
-    "vanilla",
+    "Node",
+    "Examplels",
+    "vanilla http server",
     "jasmine"
   ],
   "author": "Bernard Badenhorst",
