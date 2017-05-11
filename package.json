@@ -8,8 +8,8 @@
     "jasmine": "^2.6.0"
   },
   "scripts": {
-    "vanilla-jasmine": "node vanilla-jasmine\\src\\index.js",
-    "vanilla-jasmine-test": "node vanilla-jasmine\\spec\\index.js",
+    "vanilla-jasmine": "node vanilla-jasmine/src/index.js",
+    "vanilla-jasmine-test": "node vanilla-jasmine/spec/index.js",
     "start": "npm run vanilla-jasmine",
     "test": "npm run vanilla-jasmine-test"
   },

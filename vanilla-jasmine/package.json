@@ -2,15 +2,15 @@
   "name": "vanilla-jasmine",
   "version": "1.0.0",
   "description": "Testing NodeJS vanilla http server with jasmine",
-  "main": "app\\server.js",
+  "main": "src/index.js",
   "dependencies": {
   },
   "devDependencies": {
     "jasmine": "^2.6.0"
   },
   "scripts": {
-    "start": "node src\\index.js",
-    "test": "node spec\\index.js"
+    "start": "node src/index.js",
+    "test": "node spec/index.js"
   },
   "repository": {
     "type": "git",
