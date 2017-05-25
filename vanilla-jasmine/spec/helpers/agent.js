@@ -57,34 +57,29 @@ request = function(options) {
 };
 
 
-var Agent = function(options) {
- 
-    var self = this;
-    self.options = options || {};
-    self.options.port = options.port || 80;
-    self.options.host = options.host || options.hostname || options.address || '';
+var Agent = function(server) {
+
+    var agent = this;
+    agent._server  = server;
+    var address = server.address();
+    agent._port = address.port;
+    agent._host = address.hostname || address.address;
     
-    // Handle blank and unspecified ip addresses (default to localhost)
-    var map = {
-        '': 'localhost',
-        '::': 'localhost',
-        '0.0.0.0': 'localhost'
-    };
-    if (map[self.options.host]) {
-        self.options.host = map[self.options.host];
+    // Handle unspecified ip addresses (default to localhost)
+    if (agent._host === '::' || agent._host === '0.0.0.0')
+        agent._host = 'localhost';
+
+    agent.get = function(path, options) {
+        var opt = options || {};
+        opt.method = 'GET';
+        opt.path = path;
+        opt.host = agent._host;
+        opt.port = agent._port;
+
+        return request(opt);
     }
 
-    self.get = function(path, options) {
-        options = options || {};
-        options.method = 'GET';
-        options.path = path;
-        options.host = self.options.host;
-        options.port = self.options.port;
-
-        return request(options);
-    }
-
-    return self;
+    return agent;
 };
 
 module.exports = Agent;

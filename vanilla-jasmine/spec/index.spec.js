@@ -1,34 +1,53 @@
-var coveralls = require('coveralls');
 var jasmine = require('jasmine');
+var server = require('../src');
+var Agent = require('./helpers/agent');
+var agent = new Agent(server);
 
 describe('Hello World Server', function () {
+  describe('GET /', function () {
+    it('returns with status code 200 and "Hello World" (text/plain)', function (done) {
+      agent.get('/')
+        .then(function (response) {
+          expect(response.statusCode).toBe(200);
+          expect(response.body).toBe('Hello World');
+          expect(response.headers['content-type']).toBe('text/plain');
+          done();
+        });
+    });
 
-	describe('Server is not running', function() {
+    it('returns with status code 200', function (done) {
+      agent.get('/')
+        .then(function (response) {
+          expect(response.statusCode).toBe(200);
+          done();
+        });
+    });
 
-	});
+    it('returns with body "Hello World"', function (done) {
+      agent.get('/')
+        .then(function (response) {
+          expect(response.body).toBe('Hello World');
+          done();
+        });
+    });
 
-	console.log('Start server before running specs.');
-	var server = require('../src');
-	console.log('Create agent for testing server.');
-	var Agent = require('./helpers/agent');
-	var agent = new Agent(server.address());
+    it('returns with content type "text/plain"', function (done) {
+      agent.get('/')
+        .then(function (response) {
+          expect(response.headers['content-type']).toBe('text/plain');
+          done();
+        });
+    });
 
-	afterAll(function(){
-		console.log('\nClose server after running specs.');
-		server.close(function() {
-			console.log('Closed server.');
-		});
-	});
+  });
+});
 
-	describe('GET /', function () {
-		it('returns with status code 200 and "Hello World" (text/plain)', function (done) {
-			agent.get('/')
-				.then(function (response) {
-					expect(response.statusCode).toBe(200);
-					expect(response.body).toBe('Hello World');
-					expect(response.headers['content-type']).toBe('text/plain');
-					done();
-				});
-		});
-	});
+beforeAll(function() {
+  
+});
+
+afterAll(function(){
+  server.close(function() {
+    console.log('\n\nClosed server after running specs.');
+  });
 });
